@@ -57,7 +57,8 @@ function FormInput(props) {
         }, 2000);
       })
       .catch((err) => {
-        props.history.push("/403");
+        console.log(err.response.data.msg);
+        // props.history.push("/403");
       });
   };
 
