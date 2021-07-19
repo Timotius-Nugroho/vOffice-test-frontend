@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Ubuntu&display=swap");
+
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.logo {
+  color: white;
+  font-size: 1500%;
+}
+
+.imgLogo {
+  width: 40%;
+}
+
+.mainTitle {
+  color: white;
+}
+
+.semiTitle {
+  color: rgb(94, 92, 92);
+  font-size: 19px;
+}
+
+.semi {
+  color: gray;
+  font-size: 14px !important;
+}
+
+.buttonLogin {
+  width: 100%;
+  background-color: #2fb5bf !important;
+  border: none;
+  height: 50px;
+}
+
+@media (min-width: 768px) {
+  .breakPoints {
+    display: inline;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .breakPoints {
+    display: none;
+  }
+}
