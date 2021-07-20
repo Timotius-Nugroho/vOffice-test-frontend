@@ -4,32 +4,31 @@ import {
   Button,
   Container,
   Form,
-  Image,
-  Row,
-  Col,
+  Card,
   Spinner,
   Alert,
+  Image,
 } from "react-bootstrap";
-import { ExclamationDiamond } from "react-bootstrap-icons";
 import axiosApiIntances from "../../../utils/axios";
 
 function Login(props) {
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [showAlert, setShowAlert] = useState([false, "success", ""]);
+  const [showAlert, setShowAlert] = useState([false, "", ""]);
 
   const handleLogin = (event) => {
     event.preventDefault();
     setIsLoading(true);
     axiosApiIntances
-      .post("admin/login", { password })
+      .post("login", { client_email: email })
       .then((res) => {
         setIsLoading(false);
-        localStorage.setItem("token", res.data.data);
+        localStorage.setItem("token", res.data.data.token);
+        localStorage.setItem("email", res.data.data.cilentEmail);
         setShowAlert([true, "success", res.data.msg]);
         setTimeout(() => {
           setShowAlert([false, "", ""]);
-          props.history.push(`/admin`);
+          props.history.push(`/dashboard`);
         }, 1000);
       })
       .catch((err) => {
@@ -47,55 +46,52 @@ function Login(props) {
 
   return (
     <>
-      <Container fluid>
-        <Row>
-          <Col
-            className={`${styles.breakPoints} text-center p-5`}
-            style={{ backgroundColor: "#2fb5bf", height: "600px" }}
-          >
-            <ExclamationDiamond className={`${styles.logo} mt-5 pt-5`} />
-            <h1 className={`${styles.mainTitle} mt-3`}>Admin area</h1>
-          </Col>
-          <Col md={5} className="p-4">
-            <Image
-              src="logo_login.jpg"
-              alt="Ruangguru Logo"
-              className={`${styles.imgLogo} mt-5 mb-5 pt-4`}
-            />
-            <Form onSubmit={handleLogin} className={styles.semiTitle}>
-              <Form.Group className="mb-3">
-                <Form.Label>Password</Form.Label>
+      <Container>
+        <Card className={`${styles.cardCustom} mt-5 mx-auto p-3 shadow`}>
+          <Card.Body>
+            <Form onSubmit={handleLogin}>
+              <div className="text-center">
+                <Image
+                  src="mainLogo.jpg"
+                  alt="Logo"
+                  className={styles.imgLogo}
+                />
+              </div>
+              <div className={`${styles.title} mt-3 mb-3`}>Masuk disini</div>
+              <Form.Group controlId="formBasicEmail">
+                <Form.Label>Alamat Email</Form.Label>
                 <Form.Control
-                  type="password"
-                  placeholder="Password"
+                  type="email"
+                  placeholder="masukan email"
                   onChange={(event) => {
-                    setPassword(event.target.value);
+                    setEmail(event.target.value);
                   }}
-                  required
                 />
               </Form.Group>
-              <p className={styles.semi}>The password is "admin"</p>
+              <div className={styles.mini}>
+                Email demo : antono@any.com atau samiro@any.com
+              </div>
               <Button
-                variant="primary"
+                variant="danger"
                 type="submit"
-                className={`${styles.buttonLogin} mt-5 mb-4`}
+                className={`${styles.btnCustom} mt-4 mb-3`}
               >
                 {isLoading ? (
                   <Spinner animation="border" variant="light" size="sm" />
                 ) : (
-                  "Login"
+                  "Masuk"
                 )}
               </Button>
               {showAlert[0] ? (
                 <Alert className="text-center" variant={showAlert[1]}>
-                  <h6>{showAlert[2]}</h6>
+                  {showAlert[2]}
                 </Alert>
               ) : (
                 ""
               )}
             </Form>
-          </Col>
-        </Row>
+          </Card.Body>
+        </Card>
       </Container>
     </>
   );

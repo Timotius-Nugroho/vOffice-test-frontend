@@ -1,0 +1,74 @@
+.navbar {
+  background-color: rgb(163, 28, 28);
+  color: white;
+  padding: 7px;
+}
+
+.imgLogo {
+  height: 50px;
+  border-radius: 7px;
+}
+
+.footer {
+  background-color: rgb(163, 28, 28);
+  color: white;
+  font-size: small;
+}
+
+.buttonPower {
+  font-size: xx-large;
+  color: white;
+}
+
+.buttonPower:hover {
+  cursor: pointer;
+  border: solid;
+  border-radius: 5px;
+}
+
+.cardCustom {
+  border-radius: 10px;
+}
+
+.semi {
+  color: gray;
+  font-size: larger;
+}
+
+.credit {
+  font-size: 400%;
+  margin-top: -10px;
+}
+
+.roomCnt {
+  max-height: 400px;
+  overflow: auto;
+}
+
+.leftside {
+  border-right: solid rgb(163, 28, 28);
+}
+
+.facilitiesName {
+  font-weight: bold;
+  font-size: smaller;
+}
+
+.facilitiesQty {
+  font-size: x-small;
+}
+
+.buttonOrder {
+  font-size: xx-small;
+  margin-top: 4px;
+}
+
+.descTitle {
+  font-size: small;
+  color: gray;
+}
+
+.desc {
+  font-size: medium;
+  color: black;
+}

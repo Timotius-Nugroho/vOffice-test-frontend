@@ -23,11 +23,9 @@ axiosApiIntances.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 403) {
-      if (error.response.data.msg !== "The user has entered data") {
-        localStorage.clear();
-        alert("Please log in !");
-        window.location.href = "/";
-      }
+      localStorage.clear();
+      alert("Please log in !");
+      window.location.href = "/";
     }
     return Promise.reject(error);
   }
