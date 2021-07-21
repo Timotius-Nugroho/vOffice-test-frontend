@@ -69,7 +69,8 @@ function Login(props) {
                 />
               </Form.Group>
               <div className={styles.mini}>
-                Email demo : antono@any.com atau samiro@any.com
+                Gunakan email demo untuk masuk : antono@any.com atau
+                samiro@any.com
               </div>
               <Button
                 variant="danger"
